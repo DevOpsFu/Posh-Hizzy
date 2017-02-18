@@ -7,11 +7,17 @@ $_commonHeaders = @{
   "X-Omnia-Client" = "Hive Web Dashboard";
 }
 
-foreach ($func in (Get-ChildItem .\cmdlets, .\private))
-{
-  . $func.FullName
+$Private = (Get-ChildItem -Path (Join-Path $PSScriptRoot 'helpers') -Filter *.ps1)
+$Public  = (Get-ChildItem -Path (Join-Path $PSScriptRoot 'cmdlets') -Filter *.ps1)
+
+
+foreach ($Script in $Public) {
+  . $Script.FullName
+  Export-ModuleMember $Script.BaseName
 }
 
-Export-ModuleMember *
+foreach ($Script in $Private) {
+  . $Script.FullName
+}
 
 Initialise

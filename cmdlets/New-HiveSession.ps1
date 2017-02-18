@@ -1,7 +1,7 @@
 function New-HiveSession {
   [CmdletBinding()]
   param(
-    [pscredential] $Credential
+    [PSCredential] $Credential
   )
 
   Set-PrivateDataVariable -Key '_hiveCredential' -Value $Credential
