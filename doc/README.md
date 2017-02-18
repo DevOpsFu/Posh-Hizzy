@@ -11,4 +11,5 @@ New-HiveSession -Credential $MyCred
 
 ### CmdLets
 
+ - [New-HiveSession](/New-HiveSession.md)
  - [Get-HiveNodes](/Get-HiveNodes.md)
