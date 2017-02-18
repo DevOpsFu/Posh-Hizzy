@@ -2,14 +2,13 @@
 Load the module using `Import-Module DevOpsFu.Posh-Hizzy` 
 
 ## Usage
-Create a Hive session by calling `New-HiveSession` with a `PSCredential` object containing your username and password:
+Create a Hive session by calling [New-HiveSession](/cmdlets/New-HiveSession.md) with a `PSCredential` object containing your username and password:
 
 ```
-$MyCred = Get-PSCredential
+$MyCred = Get-Credential
 New-HiveSession -Credential $MyCred
 ```
 
 ### CmdLets
 
- - Get-HiveNodes
- Retrieve a PSObject representing all the n
+ - [Get-HiveNodes](/Get-HiveNodes.md)
