@@ -13,4 +13,5 @@ New-HiveSession -Credential $MyCred
 
  - [New-HiveSession](cmdlets/New-HiveSession.md)
  - [Get-HiveNodes](cmdlets/Get-HiveNodes.md)
-
+ - [Get-HiveSession](cmdlets/Get-HiveSession.md)
+ - [Set-HiveApiBaseUri](cmdlets/Set-HiveApiBaseUri.md)
