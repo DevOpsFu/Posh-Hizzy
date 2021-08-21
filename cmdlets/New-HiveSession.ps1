@@ -8,17 +8,29 @@ function New-HiveSession {
 
   $ApiBaseUri = Get-PrivateDataVariable -Key '_apiBaseUri'
   
-  $Uri = -join ($ApiBaseUri, "/auth/sessions")
+  # $Uri = -join ($ApiBaseUri, "/auth/sessions")
+  $Uri = "https://beekeeper-uk.hivehome.com/1.0/cognito/refresh-token"
+
+  #$Body = @{
+  #  "sessions" = @( @{
+  #    "username" = $Credential.UserName;
+  #    "password" = $Credential.GetNetworkCredential().Password;
+  #    "caller"   = "WEB"
+  #  })
+  #} | ConvertTo-Json
 
   $Body = @{
-    "sessions" = @( @{
-      "username" = $Credential.UserName;
-      "password" = $Credential.GetNetworkCredential().Password;
-      "caller"   = "WEB"
-    })
+    "username" = $Credential.UserName;
+    "password" = $Credential.GetNetworkCredential().Password;
   } | ConvertTo-Json
 
-  $Session = Invoke-RestMethod -Method Post -Uri $Uri -ContentType $_contentType -Headers $_commonHeaders -Body $Body 
+  # $Session = Invoke-RestMethod -Method Post -Uri $Uri -ContentType $_contentType -Headers $_commonHeaders -Body $Body 
+
+  $commonHeaders = @{
+    "Accept"         = "application/json";
+  }
+
+  $Session = Invoke-RestMethod -Method Post -Uri $Uri -ContentType "application/json" -Body $Body 
 
   $SessionId = $session.sessions.id
 
